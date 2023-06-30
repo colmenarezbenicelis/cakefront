@@ -1,25 +1,44 @@
 import logo from './logo.svg';
 import './App.css';
 
+
+/*Importamos componente Login */
+import  Login from './Pages/login';
+import  Create from './Pages/create';
+
+
+/*Importamos React */
+import * as React from "react";
+
+
+/*Importamos createBrouserRouter y RouterProvider de react router */
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+
+/*Configuramos el router */
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login/>,/*La ruta raiz apunta a el componente Login */
+  },
+  {
+    path: "/create",
+    element: <Create/>,/*La ruta raiz apunta a el componente create */
+  },
+]);
+
+
 function App() {
+  /*Retornamos nuestro router */
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   );
 }
+
 
 export default App;
